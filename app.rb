@@ -1,10 +1,15 @@
 f = File.open 'text.txt', 'r'
 
-hh = {}
+@hh = {}
 
 def add_to_hach word
   if !word.empty?
-    puts word
+    word.downcase!
+
+    cnt = @hh[word]
+
+    @hh[word] = cnt.to_i + 1
+    
   end
 end
 
@@ -28,3 +33,7 @@ f.each_line do |line|
 end
 
 f.close
+
+@hh.each do |key, value|
+  puts "#{key} => #{value}"
+end
